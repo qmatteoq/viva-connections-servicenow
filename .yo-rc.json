@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "14.20.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "viva-connections-servicenow",
+    "libraryId": "68be3c49-43aa-427c-89ab-85d62104a18c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "viva-connections-servicenow",
+    "solutionShortDescription": "viva-connections-servicenow description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "PrimaryText"
+  }
+}

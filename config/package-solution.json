@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "viva-connections-servicenow-client-side-solution",
+    "id": "68be3c49-43aa-427c-89ab-85d62104a18c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "viva-connections-servicenow description"
+      },
+      "longDescription": {
+        "default": "viva-connections-servicenow description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "viva-connections-servicenow Feature",
+        "description": "The feature that activates elements of the viva-connections-servicenow solution.",
+        "id": "13ebef11-7a1f-42bf-9023-1c378560be32",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/viva-connections-servicenow.sppkg"
+  }
+}
