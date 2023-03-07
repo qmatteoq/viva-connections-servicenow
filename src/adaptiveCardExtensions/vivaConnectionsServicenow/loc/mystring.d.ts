@@ -7,6 +7,8 @@ declare interface IVivaConnectionsServicenowAdaptiveCardExtensionStrings {
   PrimaryText: string;
   Description: string;
   QuickViewButton: string;
+  PrevButton: string;
+  NextButton: string;
 }
 
 declare module 'VivaConnectionsServicenowAdaptiveCardExtensionStrings' {

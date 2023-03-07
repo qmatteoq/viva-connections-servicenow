@@ -4,6 +4,8 @@ import { CardView } from './cardView/CardView';
 import { QuickView } from './quickView/QuickView';
 import { VivaConnectionsServicenowPropertyPane } from './VivaConnectionsServicenowPropertyPane';
 import { IncidentResult } from './models/Incidents';
+import { LargeCardView } from './cardView/LargeCardView';
+import { LargeQuickView } from './quickView/LargeQuickView';
 
 export interface IVivaConnectionsServicenowAdaptiveCardExtensionProps {
   title: string;
@@ -11,11 +13,14 @@ export interface IVivaConnectionsServicenowAdaptiveCardExtensionProps {
 }
 
 export interface IVivaConnectionsServicenowAdaptiveCardExtensionState {
-  incidents: IncidentResult
+  incidents: IncidentResult;
+  index: number;
 }
 
 const CARD_VIEW_REGISTRY_ID: string = 'VivaConnectionsServicenow_CARD_VIEW';
+const LARGE_CARD_VIEW_REGISTRY_ID: string = 'VivaConnectionsServicenow_LARGE_CARD_VIEW'
 export const QUICK_VIEW_REGISTRY_ID: string = 'VivaConnectionsServicenow_QUICK_VIEW';
+export const LARGE_QUICK_VIEW_REGISTRY_ID: string = 'VivaConnectionsServicenow_LARGE_QUICK_VIEW';
 
 export default class VivaConnectionsServicenowAdaptiveCardExtension extends BaseAdaptiveCardExtension<
   IVivaConnectionsServicenowAdaptiveCardExtensionProps,
@@ -26,7 +31,8 @@ export default class VivaConnectionsServicenowAdaptiveCardExtension extends Base
   public async onInit(): Promise<void> {
 
     this.state = {
-      incidents: null
+      incidents: null,
+      index: 0
     }
 
     if (this.properties.serviceNowUrl !== "") {
@@ -41,7 +47,10 @@ export default class VivaConnectionsServicenowAdaptiveCardExtension extends Base
     }
 
     this.cardNavigator.register(CARD_VIEW_REGISTRY_ID, () => new CardView());
+    this.cardNavigator.register(LARGE_CARD_VIEW_REGISTRY_ID, () => new LargeCardView())
+
     this.quickViewNavigator.register(QUICK_VIEW_REGISTRY_ID, () => new QuickView());
+    this.quickViewNavigator.register(LARGE_QUICK_VIEW_REGISTRY_ID, () => new LargeQuickView());
 
     return Promise.resolve();
   }
@@ -56,7 +65,7 @@ export default class VivaConnectionsServicenowAdaptiveCardExtension extends Base
         headers: {
           "Content-Type":  "application/json",
           "Accept": "application/json",
-          "Authorization": ""
+          "Authorization": "Basic YWRtaW46Y3pEL3ZVZVUlMkY1"
         }
       });
 
@@ -99,7 +108,7 @@ export default class VivaConnectionsServicenowAdaptiveCardExtension extends Base
   }
 
   protected renderCard(): string | undefined {
-    return CARD_VIEW_REGISTRY_ID;
+    return this.cardSize === 'Medium' ? CARD_VIEW_REGISTRY_ID : LARGE_CARD_VIEW_REGISTRY_ID;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
